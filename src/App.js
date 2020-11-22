@@ -13,13 +13,23 @@ export default class App extends Component{
 
     
   }
+
+  // function that will execute
+inputChange = (event) => {
+//doesn't hardcode the todo Value
+this.setState({
+  [event.target.name]: event.target.value
+})
+}
   
   render(){
 return (
 // alters the alignment of the div
 <div style ={{textAlign:"center"}}>
   {/* creates a text field */}
-  <input type="text" name="todo"/>
+  {/* adds an action for when text is entered */}
+
+  <input onChange ={this.inputChange} style={{marginTop : 20}} type="text" name="todo"/>{" "}
   {/* adds a button on the side */}
   <button>Add</button>
 {/* removes bullet points from list */}
