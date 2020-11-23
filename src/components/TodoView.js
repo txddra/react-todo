@@ -1,7 +1,9 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import {arrayOf, shape, string} from 'prop-types'
 
-const TodoView = ({todoList}) => {
+const TodoView = ({todoList,
+nameString, 
+age, }) => {
     return (
       
             <ul style={{listStyle:"none"}}>
@@ -15,9 +17,17 @@ const TodoView = ({todoList}) => {
           )
     
 }
+// introducing prop types
+TodoView.propTypes = {
+    todoList: arrayOf(
+        shape({
+            id: string.isRequired,
+            todo:string.isRequired
 
-// TodoView.propTypes = {
+        })
+    )
+   
 
-// }
+}
 
 export default TodoView
