@@ -24,6 +24,11 @@ export default class App extends Component{
 
   // function that will execute
 inputChangeHandler = (event) => {
+  if(this.state.errorMessageAlert){
+    this.setState({
+      errorMessageAlert: false,
+    })
+  }
 //doesn't hard code the todo Value
 //will manipulate event.target.name
 this.setState({
