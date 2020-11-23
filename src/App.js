@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 // import v4 from './V4'
 //importing the unique id module
 import {v4 as uuidv4} from "uuid"
-
+import TodoView from './components/TodoView'
 export default class App extends Component{
   state = {
     todoList:[
@@ -85,22 +85,6 @@ return (
  } 
   } 
 
-  const TodoView = ({todoList})=>{
-    //destructuring 
-    console.log(todoList)
-    return(
-    <ul style={{listStyle:"none"}}>
-{todoList.map(({id, todo})=>{ 
-   
-    return <li key={id}>{todo}</li>  
-} 
-   )
-  } 
-  </ul>
-  )
-  
-  }
-  
-  //what actually shows up on the page
+
 
 

@@ -1,12 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const TodoView = props => {
+const TodoView = ({todoList}) => {
     return (
-        <div>
-            
-        </div>
-    )
+      
+            <ul style={{listStyle:"none"}}>
+        {todoList.map(({id, todo})=>{ 
+           
+            return <li key={id}>{todo}</li>  
+        } 
+           )
+          } 
+          </ul>
+          )
+    
 }
 
 // TodoView.propTypes = {
