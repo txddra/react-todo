@@ -15,6 +15,8 @@ export default class App extends Component{
     ],
 
     todoValue:"",
+    // a state that shows an error
+    errorMessageAlert: false,
 
 
     
@@ -54,10 +56,14 @@ this.setState({
   
 render(){
   //destructuring
-  const {todoList}= this.state;
+  const {todoList,
+  errorMessageAlert}= this.state;
 return (
 // alters the alignment of the div
 <div style ={{textAlign:"center"}}>
+{/* this will only work if no value is passed, but add is pressed */}
+errorMessageAlert ?<div>Please enter a value</div>: null
+
   {/* creates a text field */}
   {/* adds an action for when text is entered */}
 
