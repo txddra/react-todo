@@ -13,6 +13,7 @@ export default class App extends Component{
       }
 
     ],
+
     todoValue:"",
 
 
@@ -21,7 +22,7 @@ export default class App extends Component{
 
   // function that will execute
 inputChangeHandler = (event) => {
-//doesn't hardcode the todo Value
+//doesn't hard code the todo Value
 //will manipulate event.target.name
 this.setState({
   [event.target.name]: event.target.value
@@ -34,7 +35,9 @@ submitHandler=(event)=>{
 
 let newTodoObj ={
   id:uuidv4(),
-  todo: this.state.todo
+  //this needed to change from the obj and set it to todo 
+  todo: this.state.todoValue
+
 }
 
   //
@@ -43,8 +46,10 @@ let newArray = [...this.state.todoList, newTodoObj];
 
 this.setState({
   todoList: newArray,
+  //will clear things out
+  todoValue:""
 })
-
+ 
 }
   
   render(){
@@ -54,7 +59,13 @@ return (
   {/* creates a text field */}
   {/* adds an action for when text is entered */}
 
-  <input onChange ={this.inputChangeHandler} style={{marginTop : 20}} type="text" name="todo"/>{" "}
+  <input onChange ={this.inputChangeHandler} style={{marginTop : 20}} 
+  type="text" 
+  // the values have to match the state in order to work
+  name="todoValue"
+  //this will help the words disappear after the add button
+  value ={this.state.todoValue}
+  />{" "}
   {/* adds a button on the side */}
   {/* onClick triggers the submit function and makes the button function */}
   <button onClick={this.submitHandler}>Add</button>
@@ -67,7 +78,7 @@ return (
     return <li key={id}>{todo}</li> 
   })}
   </ul>
-   </div>
+  </div>
   )
 
   }
