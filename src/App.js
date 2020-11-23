@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
+// import v4 from './V4'
+//importing the unique id module
+import {v4 as uuidv4} from "uuid"
 
 export default class App extends Component{
-  state={
+  state = {
     todoList:[
       { 
-        id:"",
+        //makes the i.d. into a unique i.d. so that the numbers are not hardcoded and breaks the app.
+        id:uuidv4(),
         todo:"",
       }
 
@@ -28,7 +32,18 @@ submitHandler=(event)=>{
   // prevents hard refresh from the browser
   event.preventDefault();
 
-  
+let newTodoObj ={
+  id:uuidv4(),
+  todo: this.state.todo
+}
+
+  //
+let newArray = [...this.state.todoList, newTodoObj];
+
+
+this.setState({
+  todoList: newArray,
+})
 
 }
   
@@ -41,13 +56,13 @@ return (
 
   <input onChange ={this.inputChangeHandler} style={{marginTop : 20}} type="text" name="todo"/>{" "}
   {/* adds a button on the side */}
-  {/* makes the button function */}
+  {/* onClick triggers the submit function and makes the button function */}
   <button onClick={this.submitHandler}>Add</button>
 {/* removes bullet points from list */}
   <ul style={{listStyle:"none"}}>
 
   {/* loops through the given array of and renders or extracts the values of the todo */}
-  lol @ {this.state.todoList.map(({id, todo})=>{
+  {this.state.todoList.map(({id, todo})=>{
     //tracks the id
     return <li key={id}>{todo}</li> 
   })}
