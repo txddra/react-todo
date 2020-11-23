@@ -9,7 +9,36 @@ age, }) => {
             <ul style={{listStyle:"none"}}>
         {todoList.map(({id, todo})=>{ 
            
-            return <li key={id}>{todo}</li>  
+            return (<li key={id} style={{margin:20}}>{todo}{" "}
+            <span style= {{
+                margin: 10,
+                padding: 5,
+                backgroundColor: "orange",
+                color: "white",
+                borderRadius:5
+
+            }
+
+            }
+            >
+                Edit
+            </span>
+                <span 
+                style={{
+                    margin: 10,
+                    padding: 5,
+                    backgroundColor: "#fff44f",
+                    color: "white",
+                    borderRadius:5,
+                }
+            }  
+                >
+                Delete
+
+                </span>
+                </li>  
+                
+                )
         } 
            )
           } 
@@ -30,4 +59,4 @@ TodoView.propTypes = {
 
 }
 
-export default TodoView
+export default TodoView;
