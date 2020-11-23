@@ -6,11 +6,11 @@ import "./TodoView.css"
 const TodoView = ({todoList,
     deletionHandle,
 nameString, 
-age, }) => {
+age}) => {
 
     //pass the unique id through 
     const deleteButtonHandle =(id)=>{
-// deletionHandle()
+deletionHandle(id)
     }
 
 
@@ -24,7 +24,7 @@ age, }) => {
                 Edit
             </span>
 
-            <span  onClick={()=> deleteButtonHandle(id)}className="todo-button-shared-style delete-button" >
+            <span onClick={()=> deleteButtonHandle(id)} className="todo-button-shared-style delete-button" >
                 Delete
 
                 </span>
