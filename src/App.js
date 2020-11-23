@@ -35,6 +35,15 @@ submitHandler=(event)=>{
   // prevents hard refresh from the browser
   event.preventDefault();
 
+//this will make it so that when something isn't in the text box
+//and the submit button is clicked, it will produce an error message, otherwise, render the todo
+ if(this.state.todoValue.length === 0){
+  this.setState({
+    errorMessageAlert: true
+  });
+  return;
+ }
+
 let newTodoObj ={
   id:uuidv4(),
   //this needed to change from the obj and set it to todo 
@@ -49,20 +58,23 @@ let newArray = [...this.state.todoList, newTodoObj];
 this.setState({
   todoList: newArray,
   //will clear things out
-  todoValue:""
+  todoValue:"",
 })
  
 }
   
 render(){
   //destructuring
-  const {todoList,
-  errorMessageAlert}= this.state;
+  const {
+    todoList,
+  errorMessageAlert
+}= this.state;
+
 return (
 // alters the alignment of the div
 <div style ={{textAlign:"center"}}>
 {/* this will only work if no value is passed, but add is pressed */}
-errorMessageAlert ?<div>Please enter a value</div>: null
+{errorMessageAlert ? (<div>Please enter a value </div> ) : null}
 
   {/* creates a text field */}
   {/* adds an action for when text is entered */}
