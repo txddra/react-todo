@@ -79,7 +79,7 @@ return (
 // alters the alignment of the div
 <div style ={{textAlign:"center"}}>
 {/* this will only work if no value is passed, but add is pressed */}
-{errorMessageAlert ? (<div>Please enter a value </div> ) : null}
+{errorMessageAlert ? (<div style= {{color: "orange"}}>Please enter a value </div> ) : null}
 
   {/* creates a text field */}
   {/* adds an action for when text is entered */}
