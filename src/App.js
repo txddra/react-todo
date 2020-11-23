@@ -1,4 +1,4 @@
-import {Component} from 'react';
+import React, {Component} from 'react';
 
 export default class App extends Component{
   state={
@@ -8,18 +8,28 @@ export default class App extends Component{
         todo:"",
       }
 
-    ]
+    ],
+    todoValue:"",
 
 
     
   }
 
   // function that will execute
-inputChange = (event) => {
+inputChangeHandler = (event) => {
 //doesn't hardcode the todo Value
+//will manipulate event.target.name
 this.setState({
   [event.target.name]: event.target.value
 })
+}
+//this is the function that makes the button work
+submitHandler=(event)=>{
+  // prevents hard refresh from the browser
+  event.preventDefault();
+
+  
+
 }
   
   render(){
@@ -29,17 +39,20 @@ return (
   {/* creates a text field */}
   {/* adds an action for when text is entered */}
 
-  <input onChange ={this.inputChange} style={{marginTop : 20}} type="text" name="todo"/>{" "}
+  <input onChange ={this.inputChangeHandler} style={{marginTop : 20}} type="text" name="todo"/>{" "}
   {/* adds a button on the side */}
-  <button>Add</button>
+  {/* makes the button function */}
+  <button onClick={this.submitHandler}>Add</button>
 {/* removes bullet points from list */}
   <ul style={{listStyle:"none"}}>
 
-  </ul>
-  {/* loops through the given todos and renders the values of the todo */}
+  {/* loops through the given array of and renders or extracts the values of the todo */}
   lol @ {this.state.todoList.map(({id, todo})=>{
-  return <li key={id}>{todo}</li> 
-})} </div>
+    //tracks the id
+    return <li key={id}>{todo}</li> 
+  })}
+  </ul>
+   </div>
   )
 
   }
