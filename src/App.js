@@ -3,13 +3,15 @@ import React, {Component} from 'react';
 //importing the unique id module
 import {v4 as uuidv4} from "uuid"
 import TodoView from './components/TodoView'
+
+
 export default class App extends Component{
   state = {
     todoList:[
       { 
         //makes the i.d. into a unique i.d. so that the numbers are not hardcoded and breaks the app.
         id:uuidv4(),
-        todo:"",
+        todo:"Be the very best, that no one ever was."
       }
 
     ],
@@ -35,6 +37,8 @@ this.setState({
   [event.target.name]: event.target.value
 })
 }
+//all the data comes from the parent
+
 //this is the function that makes the button work
 submitHandler=(event)=>{
   // prevents hard refresh from the browser
@@ -66,6 +70,14 @@ this.setState({
   todoValue:"",
 })
  
+}
+
+deletionHandle=(id)=>{
+
+  //make a copy of the array
+let copiedArray = this.state.todoList
+
+
 }
   
 render(){
@@ -102,7 +114,8 @@ return (
 
 
 
-<TodoView todoList={todoList}/>
+<TodoView todoList={todoList}
+deletionHandle ={this.deletionHandle}/>
 </div>
 )
  } 

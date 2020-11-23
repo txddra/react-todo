@@ -1,38 +1,30 @@
 import React from 'react'
 import {arrayOf, shape, string} from 'prop-types'
 
+import "./TodoView.css"
+
 const TodoView = ({todoList,
+    deletionHandle,
 nameString, 
 age, }) => {
+
+    //pass the unique id through 
+    const deleteButtonHandle =(id)=>{
+// deletionHandle()
+    }
+
+
     return (
-      
-            <ul style={{listStyle:"none"}}>
+    
+    <ul style={{listStyle:"none"}}>
         {todoList.map(({id, todo})=>{ 
            
             return (<li key={id} style={{margin:20}}>{todo}{" "}
-            <span style= {{
-                margin: 10,
-                padding: 5,
-                backgroundColor: "orange",
-                color: "white",
-                borderRadius:5
-
-            }
-
-            }
-            >
+            <span className="todo-button-shared-style edit-button" >
                 Edit
             </span>
-                <span 
-                style={{
-                    margin: 10,
-                    padding: 5,
-                    backgroundColor: "#fff44f",
-                    color: "white",
-                    borderRadius:5,
-                }
-            }  
-                >
+
+            <span  onClick={()=> deleteButtonHandle(id)}className="todo-button-shared-style delete-button" >
                 Delete
 
                 </span>
@@ -40,10 +32,10 @@ age, }) => {
                 
                 )
         } 
-           )
-          } 
-          </ul>
-          )
+    )
+} 
+    </ul> 
+    )
     
 }
 // introducing prop types
