@@ -18,10 +18,12 @@ export default class App extends Component{
     ],
 
     todoValue:"",
+    editValue:"",
     // a state that shows an error
     errorMessageAlert: false,
     missingContentMessage:false,
-    editInput:false,
+    disabledEdit: false
+    // editInput:false,
 
 
     
@@ -87,7 +89,7 @@ this.setState({
 }
 
 
-
+//delete button
 deletionHandle=(targetID)=>{
 
   //make a copy of the array
@@ -115,22 +117,30 @@ editHandle =(targetID)=>{
 
   let copiedArray = [...this.state.todoList];
 
+  let editTodoValue;
+
   //looping through the array
   let updatedArray = copiedArray.map((item)=>{
     if(item.id === targetID){
       //toggles the edit button to update
       item.editToggle = true;
+      editTodoValue = item.todo
     }
     return item;
   });
 
   this.setState({
     todoList: updatedArray,
+    editValue: editTodoValue,
+    disabledEdit: true,
   })
 }
 
 
-onChangeHandler = ()=>{
+onChangeHandler = (event)=>{
+  this.setState({
+    [event.target.name]: event.target.value,
+  })
 
 }
   
@@ -140,7 +150,8 @@ render(){
     todoList,
   errorMessageAlert,
   missingContentMessage,
-  editValue
+  editValue,
+  disabledEdit,
 }= this.state;
 
 return (
@@ -178,7 +189,8 @@ return (
 deletionHandle ={this.deletionHandle}
 editHandle = {this.editHandle}
 onChangeHandler ={this.onChangeHandler}
-editValue ={editValue}/>
+editValue ={editValue}
+disabledEdit={disabledEdit}/>
 )}
 </div>
 )

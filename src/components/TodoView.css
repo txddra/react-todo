@@ -24,6 +24,10 @@ font-family: Verdana, Geneva, Tahoma, sans-serif
     
 
 }
+.disabled{
+    pointer-events: none;
+    background-color: grey;
+}
 li{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }

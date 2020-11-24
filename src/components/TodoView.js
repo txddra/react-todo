@@ -8,6 +8,7 @@ const TodoView = ({todoList,
     editHandle,
     onChangeHandler,
     editValue,
+    disabledEdit,
 nameString, 
 age}) => {
 
@@ -42,7 +43,7 @@ deletionHandle(id)
         {editToggle ? ( <span className="todo-button-shared-style edit-button">
                     Update
 </span>):(
-                    <span onClick={()=>editHandle(id)} className="todo-button-shared-style edit-button" >
+                    <span onClick={()=>editHandle(id)} className={`todo-button-shared-style edit-button ${disabledEdit ? "disabled": ""}` }>
                 Edit 
             </span>
 
