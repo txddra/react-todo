@@ -19,6 +19,7 @@ export default class App extends Component{
     todoValue:"",
     // a state that shows an error
     errorMessageAlert: false,
+    missingContentMessage:true,
 
 
     
@@ -72,19 +73,28 @@ this.setState({
  
 }
 
-deletionHandle=(id)=>{
+deletionHandle=(targetID)=>{
 
   //make a copy of the array
 let copiedArray = this.state.todoList
 
+//filter out the elements of the copied array
+let filteredArray = copiedArray.filter(({id})=>{
+  return id !== targetID
 
+});
+//manipulate the state
+this.setState({
+  todoList: filteredArray
+})
 }
   
 render(){
   //destructuring
   const {
     todoList,
-  errorMessageAlert
+  errorMessageAlert,
+  missingContentMessage
 }= this.state;
 
 return (
@@ -109,13 +119,17 @@ return (
   <button onClick={this.submitHandler}>Add</button>
 {/* removes bullet points from list */}
   {/* <ul style={{listStyle:"none"}}> */}
-
   {/* loops through the given array of and renders or extracts the values of the todo */}
 
+{/* ternary that shows an error message when there are no todos present */}
 
+{missingContentMessage ?( <div>Please add items to your todo list!</div>
+):
 
+(
 <TodoView todoList={todoList}
 deletionHandle ={this.deletionHandle}/>
+)}
 </div>
 )
  } 
