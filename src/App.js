@@ -11,7 +11,8 @@ export default class App extends Component{
       { 
         //makes the i.d. into a unique i.d. so that the numbers are not hardcoded and breaks the app.
         id:uuidv4(),
-        todo:"Be the very best, that no one ever was."
+        todo:"Be the very best, that no one ever was.",
+        editToggle: false
       }
 
     ],
@@ -20,6 +21,7 @@ export default class App extends Component{
     // a state that shows an error
     errorMessageAlert: false,
     missingContentMessage:false,
+    editInput:false,
 
 
     
@@ -108,6 +110,24 @@ this.setState({
   }
 })
 }
+//edit button
+editHandle =(targetID)=>{
+
+  let copiedArray = [...this.state.todoList];
+
+  //looping through the array
+  let updatedArray = copiedArray.map((item)=>{
+    if(item.id === targetID){
+      item.editToggle = true;
+    }
+    return item;
+  });
+
+  this.setState({
+    todoList: updatedArray,
+  })
+}
+
   
 render(){
   //destructuring
@@ -148,7 +168,8 @@ return (
 
 (
 <TodoView todoList={todoList}
-deletionHandle ={this.deletionHandle}/>
+deletionHandle ={this.deletionHandle}
+editHandle = {this.editHandle}/>
 )}
 </div>
 )

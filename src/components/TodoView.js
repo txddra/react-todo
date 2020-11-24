@@ -5,6 +5,7 @@ import "./TodoView.css"
 
 const TodoView = ({todoList,
     deletionHandle,
+    editHandle,
 nameString, 
 age}) => {
 
@@ -13,16 +14,30 @@ age}) => {
 deletionHandle(id)
     }
 
+    //edit
+    // const editButtonHandle =(id)=>{
+    //     editHandle(id)
+    // }
 
     return (
     
     <ul style={{listStyle:"none"}}>
-        {todoList.map(({id, todo})=>{ 
+        {todoList.map(({ id, todo, editToggle })=>{ 
            
-            return (<li key={id} style={{margin:20}}>{todo}{" "}
-            <span className="todo-button-shared-style edit-button" >
-                Edit
+            return (
+            <li key={id} style={{margin:20}}>
+                {todo}{" "}
+
+            {editToggle ? ( <span className="todo-button-shared-style edit-button">
+                    Update
+                </span>):(
+
+                    <span onClick={()=>editHandle(id)} className="todo-button-shared-style edit-button" >
+                Edit 
             </span>
+
+                )
+            }
 
             <span onClick={()=> deleteButtonHandle(id)} className="todo-button-shared-style delete-button" >
                 Delete
