@@ -19,7 +19,7 @@ export default class App extends Component{
     todoValue:"",
     // a state that shows an error
     errorMessageAlert: false,
-    missingContentMessage:true,
+    missingContentMessage:false,
 
 
     
@@ -38,7 +38,10 @@ this.setState({
   [event.target.name]: event.target.value
 })
 }
+
+
 //all the data comes from the parent
+
 
 //this is the function that makes the button work
 submitHandler=(event)=>{
@@ -69,9 +72,19 @@ this.setState({
   todoList: newArray,
   //will clear things out
   todoValue:"",
+},//this will take away the error message and replace it with the newest added todo item
+()=>{
+  //if the length of the todo list is greater than 0, then remove the error message
+  if(this.state.todoList.length>0){
+this.setState({
+  missingContentMessage:false
+})
+  }
 })
  
 }
+
+
 
 deletionHandle=(targetID)=>{
 
@@ -86,6 +99,13 @@ let filteredArray = copiedArray.filter(({id})=>{
 //manipulate the state
 this.setState({
   todoList: filteredArray
+},
+()=>{
+  if(this.state.todoList.length === 0){
+    this.setState({
+      missingContentMessage: true,
+    })
+  }
 })
 }
   
