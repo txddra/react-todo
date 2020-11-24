@@ -23,15 +23,18 @@ deletionHandle(id)
     
     <ul style={{listStyle:"none"}}>
         {todoList.map(({ id, todo, editToggle })=>{ 
-           
             return (
             <li key={id} style={{margin:20}}>
-                {todo}{" "}
+                {/* {todo}{" "} */}
 
-            {editToggle ? ( <span className="todo-button-shared-style edit-button">
+            {editToggle ? ( <input type="text" value={todo} />):(
+
+                <span> {todo}  </span>
+        )}
+
+        {editToggle ? ( <span className="todo-button-shared-style edit-button">
                     Update
-                </span>):(
-
+</span>):(
                     <span onClick={()=>editHandle(id)} className="todo-button-shared-style edit-button" >
                 Edit 
             </span>
