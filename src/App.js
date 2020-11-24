@@ -123,7 +123,7 @@ return (
 
 {/* ternary that shows an error message when there are no todos present */}
 
-{missingContentMessage ?( <div>Please add items to your todo list!</div>
+{missingContentMessage ?( <div style={{ align: "center",marginTop:10, padding:5, textDecoration:"underline", color:"orangered"}}>Please add items to your todo list!</div>
 ):
 
 (
