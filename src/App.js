@@ -118,6 +118,7 @@ editHandle =(targetID)=>{
   //looping through the array
   let updatedArray = copiedArray.map((item)=>{
     if(item.id === targetID){
+      //toggles the edit button to update
       item.editToggle = true;
     }
     return item;
@@ -128,13 +129,18 @@ editHandle =(targetID)=>{
   })
 }
 
+
+onChangeHandler = ()=>{
+
+}
   
 render(){
   //destructuring
   const {
     todoList,
   errorMessageAlert,
-  missingContentMessage
+  missingContentMessage,
+  editValue
 }= this.state;
 
 return (
@@ -167,9 +173,12 @@ return (
 ):
 
 (
+  //the child
 <TodoView todoList={todoList}
 deletionHandle ={this.deletionHandle}
-editHandle = {this.editHandle}/>
+editHandle = {this.editHandle}
+onChangeHandler ={this.onChangeHandler}
+editValue ={editValue}/>
 )}
 </div>
 )

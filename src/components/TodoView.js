@@ -6,6 +6,8 @@ import "./TodoView.css"
 const TodoView = ({todoList,
     deletionHandle,
     editHandle,
+    onChangeHandler,
+    editValue,
 nameString, 
 age}) => {
 
@@ -27,10 +29,15 @@ deletionHandle(id)
             <li key={id} style={{margin:20}}>
                 {/* {todo}{" "} */}
 
-            {editToggle ? ( <input type="text" value={todo} />):(
-
+            {editToggle ? ( <input 
+            type="text" 
+            value={editValue}
+            name="editValue"
+            onChange ={()=> onChangeHandler()} 
+            />):(
+                
                 <span> {todo}  </span>
-        )}
+                )}
 
         {editToggle ? ( <span className="todo-button-shared-style edit-button">
                     Update
