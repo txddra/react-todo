@@ -69,7 +69,8 @@ deletionHandle(id)
                 <Span
                 value={"Delete"}
                 id={id}
-                onClickFromDelete={deleteButtonHandle}/>
+                onClickFromDelete={deleteButtonHandle}
+                classNameFromDelete= {`todo-button-shared-style`}/>
                 
                 </li>  
                 
