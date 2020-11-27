@@ -1,7 +1,7 @@
 import React from "react";
 
 const Span =({onClickFromDelete, value, id})=>{
-    return <span onClick ={()=> onClickFromDelete(id)}
+    return <span onClick ={()=> onClickFromDelete(id)}>{value}</span>
 
 }
 
