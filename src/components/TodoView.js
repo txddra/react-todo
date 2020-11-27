@@ -2,6 +2,8 @@ import React from 'react'
 import {arrayOf, shape, string} from 'prop-types'
 
 import "./TodoView.css"
+//this is the span that we use to refactor the delete
+import Span from './shared/Span'
 
 const TodoView = ({todoList,
     deletionHandle,
@@ -9,6 +11,7 @@ const TodoView = ({todoList,
     onChangeHandler,
     editValue,
     disabledEdit,
+    updateSubmitHandle,
 nameString, 
 age}) => {
 
@@ -30,30 +33,44 @@ deletionHandle(id)
             <li key={id} style={{margin:20}}>
                 {/* {todo}{" "} */}
 
-            {editToggle ? ( <input 
+            {editToggle ? ( 
+            <input 
             type="text" 
             value={editValue}
             name="editValue"
-            onChange ={()=> onChangeHandler()} 
+            onChange ={(event)=> onChangeHandler(event)} 
             />):(
                 
                 <span> {todo}  </span>
-                )}
+                )
+            }
 
-        {editToggle ? ( <span className="todo-button-shared-style edit-button">
+        {editToggle ? ( 
+        <span className="todo-button-shared-style edit-button" 
+        onClick={updateSubmitHandle(id)}>
                     Update
-</span>):(
-                    <span onClick={()=>editHandle(id)} className={`todo-button-shared-style edit-button ${disabledEdit ? "disabled": ""}` }>
+</span>
+):(
+            <span onClick={()=>editHandle(id)} 
+            className={`todo-button-shared-style edit-button ${disabledEdit ? "disabled" : ""}`}>
                 Edit 
             </span>
 
                 )
             }
+            {/* old code: */}
 
-            <span onClick={()=> deleteButtonHandle(id)} className="todo-button-shared-style delete-button" >
+            {/* <span onClick={()=> deleteButtonHandle(id)} className="todo-button-shared-style delete-button" >
                 Delete
 
-                </span>
+                </span> */}
+
+                {/* new, refactored code: */}
+                <Span
+                value={"Delete"}
+                id={id}
+                onClickFromDelete={deleteButtonHandle}/>
+                
                 </li>  
                 
                 )

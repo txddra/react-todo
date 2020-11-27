@@ -22,7 +22,8 @@ export default class App extends Component{
     // a state that shows an error
     errorMessageAlert: false,
     missingContentMessage:false,
-    disabledEdit: false
+    disabledEdit: false,
+    // updateSubmitHandle:false,
     // editInput:false,
 
 
@@ -93,7 +94,7 @@ this.setState({
 deletionHandle=(targetID)=>{
 
   //make a copy of the array
-let copiedArray = this.state.todoList
+let copiedArray = [...this.state.todoList]
 
 //filter out the elements of the copied array
 let filteredArray = copiedArray.filter(({id})=>{
@@ -143,6 +144,23 @@ onChangeHandler = (event)=>{
   })
 
 }
+updateSubmitHandle =(targetID)=>{
+
+  let copiedArray = [...this.state.todoList];
+//loop through the copied array
+  let updatedArray = copiedArray.map((item)=>{
+    if(item.id === targetID){
+      item.editToggle = false;
+      item.todo = this.state.editValue
+    }
+    return item
+  });
+
+  this.setState({
+    todoList:updatedArray,
+    disabledEdit: false,
+  })
+}
   
 render(){
   //destructuring
@@ -190,7 +208,8 @@ deletionHandle ={this.deletionHandle}
 editHandle = {this.editHandle}
 onChangeHandler ={this.onChangeHandler}
 editValue ={editValue}
-disabledEdit={disabledEdit}/>
+disabledEdit={disabledEdit}
+updateSubmitHandle ={this.updateSubmitHandle}/>
 )}
 </div>
 )
