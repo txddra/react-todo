@@ -47,7 +47,7 @@ deletionHandle(id)
 
         {editToggle ? ( 
         <span className="todo-button-shared-style edit-button" 
-        onClick={updateSubmitHandle(id)}>
+        onClick={()=> updateSubmitHandle(id)}>
                     Update
 </span>
 ):(
@@ -70,7 +70,11 @@ deletionHandle(id)
                 value={"Delete"}
                 id={id}
                 onClickFromDelete={deleteButtonHandle}
-                classNameFromDelete= {`todo-button-shared-style`}/>
+                classNameFromDelete= {`todo-button-shared-style delete-button`}
+                disabledClass ="disabled"
+                disabledEdit ={disabledEdit}
+                />
+
                 
                 </li>  
                 
