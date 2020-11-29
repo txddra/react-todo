@@ -18,6 +18,10 @@ age}) => {
     //pass the unique id through 
     const deleteButtonHandle =(id)=>{
 deletionHandle(id)
+    };
+    
+    const onChangeHandlerButton =(id)=>{
+        onChangeHandler(id)
     }
 
     //edit
@@ -38,25 +42,26 @@ deletionHandle(id)
             type="text" 
             value={editValue}
             name="editValue"
-            onChange ={(event)=> onChangeHandler(event)} 
-            />):(
+            onChange ={(event)=> onChangeHandlerButton(event)} 
+            />
+            ):(
                 
                 <span> {todo}  </span>
                 )
             }
 
         {editToggle ? ( 
-        <span className="todo-button-shared-style edit-button" 
-        onClick={()=> updateSubmitHandle(id)}>
+        <span onClick={()=> onChangeHandler(id)} className="todo-button-shared-style edit-button">
                     Update
 </span>
 ):(
-            <span onClick={()=>editHandle(id)} 
-            className={`todo-button-shared-style edit-button ${disabledEdit ? "disabled" : ""}`}>
-                Edit 
-            </span>
+        <span onClick={()=>editHandle(id)} 
+        className={`todo-button-shared-style edit-button
+          ${disabledEdit ? "disabled" : ""}`}>
+            Edit 
+        </span>
 
-                )
+    )
             }
             {/* old code: */}
 
@@ -70,7 +75,7 @@ deletionHandle(id)
                 value={"Delete"}
                 id={id}
                 onClickFromDelete={deleteButtonHandle}
-                classNameFromDelete= {`todo-button-shared-style delete-button`}
+                className= {`todo-button-shared-style delete-button`}
                 disabledClass ="disabled"
                 disabledEdit ={disabledEdit}
                 />
@@ -95,7 +100,7 @@ TodoView.propTypes = {
 
         })
     )
-   
+
 
 }
 

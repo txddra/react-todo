@@ -19,7 +19,8 @@ export default class App extends Component{
 
     todoValue:"",
     editValue:"",
-    // a state that shows an error
+
+    /*showErrorMessage */
     errorMessageAlert: false,
     missingContentMessage:false,
     disabledEdit: false,
@@ -31,6 +32,8 @@ export default class App extends Component{
   }
 
   // function that will execute
+
+  /*handleInputChange*/
 inputChangeHandler = (event) => {
   if(this.state.errorMessageAlert){
     this.setState({
@@ -49,6 +52,8 @@ this.setState({
 
 
 //this is the function that makes the button work
+
+/**/
 submitHandler=(event)=>{
   // prevents hard refresh from the browser
   event.preventDefault();
@@ -114,6 +119,7 @@ this.setState({
 })
 }
 //edit button
+/*appHandleEditTodo*/
 editHandle =(targetID)=>{
 
   let copiedArray = [...this.state.todoList];
@@ -137,13 +143,14 @@ editHandle =(targetID)=>{
   })
 }
 
-
+/*handleOnChange*/
 onChangeHandler = (event)=>{
   this.setState({
     [event.target.name]: event.target.value,
   })
 
 }
+/*appHandleUpdateSubmit*/
 updateSubmitHandle =(targetID)=>{
 
   let copiedArray = [...this.state.todoList];
@@ -165,7 +172,7 @@ updateSubmitHandle =(targetID)=>{
 render(){
   //destructuring
   const {
-    todoList,
+  todoList,
   errorMessageAlert,
   missingContentMessage,
   editValue,
@@ -202,7 +209,7 @@ return (
 ):
 
 (
-  //the child
+  // the child
 <TodoView todoList={todoList}
 deletionHandle ={this.deletionHandle}
 editHandle = {this.editHandle}

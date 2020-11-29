@@ -4,20 +4,21 @@ const Span = ({
     value, 
     id, 
     onClickFromDelete, 
-    classNameFromDelete,
+    className,
     disabledClass, 
     disabledEdit
 })=>{
-    //disables t he delete button
+
+    //disables the delete button
     let spanDisabledDeleteButton = disabledEdit ? disabledClass : "";
     let spanOnClick = onClickFromDelete ? onClickFromDelete: ""
     return(
     <Span 
-    className={`${classNameFromDelete} ${spanDisabledDeleteButton}`} 
+    className={`${className} ${spanDisabledDeleteButton}`} 
     onClick ={()=>spanOnClick (id)}>
         {value}
     </Span>
     );
 }
 
-export default Span
+export default Span;
