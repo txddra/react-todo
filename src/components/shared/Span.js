@@ -3,19 +3,22 @@ import React from "react";
 const Span = ({
     value, 
     id, 
-    onClickFromDelete, 
+    onClick, 
     className,
     disabledClass, 
-    disabledEdit
+    disabledButton
 })=>{
 
     //disables the delete button
-    let spanDisabledDeleteButton = disabledEdit ? disabledClass : "";
-    let spanOnClick = onClickFromDelete ? onClickFromDelete: ""
+    let spanDisabledDeleteButton = disabledButton ? disabledClass : "";
+
+    let spanOnClick = onClick ? 
+    onClick: ()=>{}
+
     return(
     <Span 
     className={`${className} ${spanDisabledDeleteButton}`} 
-    onClick ={()=>spanOnClick (id)}>
+    onClick ={()=>spanOnClick(id)}>
         {value}
     </Span>
     );

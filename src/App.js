@@ -13,7 +13,7 @@ export default class App extends Component{
         id:uuidv4(),
         todo:"Be the very best, that no one ever was.",
         editToggle: false
-      }
+      },
 
     ],
 
@@ -22,7 +22,9 @@ export default class App extends Component{
 
     /*showErrorMessage */
     errorMessageAlert: false,
+    /*showNoTodosMessage*/
     missingContentMessage:false,
+     
     disabledEdit: false,
     // updateSubmitHandle:false,
     // editInput:false,
@@ -53,7 +55,7 @@ this.setState({
 
 //this is the function that makes the button work
 
-/**/
+/*handleSubmit*/
 submitHandler=(event)=>{
   // prevents hard refresh from the browser
   event.preventDefault();
@@ -87,6 +89,7 @@ this.setState({
   //if the length of the todo list is greater than 0, then remove the error message
   if(this.state.todoList.length>0){
 this.setState({
+  /*showNoTodosMessage*/
   missingContentMessage:false
 })
   }
@@ -96,6 +99,7 @@ this.setState({
 
 
 //delete button
+/*handleDeleteTodo*/
 deletionHandle=(targetID)=>{
 
   //make a copy of the array
@@ -117,7 +121,9 @@ this.setState({
     })
   }
 })
-}
+};
+
+
 //edit button
 /*appHandleEditTodo*/
 editHandle =(targetID)=>{
@@ -210,7 +216,8 @@ return (
 
 (
   // the child
-<TodoView todoList={todoList}
+<TodoView 
+/*appHandleDeleteTodo */
 deletionHandle ={this.deletionHandle}
 editHandle = {this.editHandle}
 onChangeHandler ={this.onChangeHandler}

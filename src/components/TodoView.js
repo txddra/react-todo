@@ -16,7 +16,9 @@ nameString,
 age}) => {
 
     //pass the unique id through 
+    /*todoViewHandleDeleteButton*/
     const deleteButtonHandle =(id)=>{
+//from the parent(app.js)
 deletionHandle(id)
     };
     
@@ -24,10 +26,13 @@ deletionHandle(id)
         onChangeHandler(id)
     }
 
-    //edit
+    // edit
     // const editButtonHandle =(id)=>{
     //     editHandle(id)
     // }
+    const updateSubmitHandlerButton =(id)=>{
+        updateSubmitHandle(id)
+    }
 
     return (
     
@@ -37,16 +42,19 @@ deletionHandle(id)
             <li key={id} style={{margin:20}}>
                 {/* {todo}{" "} */}
 
-            {editToggle ? ( 
+            {
+            
+            editToggle ? ( 
             <input 
             type="text" 
-            value={editValue}
+            value="{editValue}"
             name="editValue"
-            onChange ={(event)=> onChangeHandlerButton(event)} 
+            onChange ={onChangeHandlerButton} 
             />
             ):(
                 
-                <span> {todo}  </span>
+                // <span> {todo}  </span>
+                <Span value ={todo}/>
                 )
             }
 
@@ -74,10 +82,10 @@ deletionHandle(id)
                 <Span
                 value={"Delete"}
                 id={id}
-                onClickFromDelete={deleteButtonHandle}
+                onClick={deleteButtonHandle}
                 className= {`todo-button-shared-style delete-button`}
                 disabledClass ="disabled"
-                disabledEdit ={disabledEdit}
+                disabledButton={disabledEdit}
                 />
 
                 
