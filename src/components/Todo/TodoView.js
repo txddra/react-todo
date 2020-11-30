@@ -3,7 +3,7 @@ import {arrayOf, shape, string} from 'prop-types'
 
 import "./TodoView.css"
 //this is the span that we use to refactor the delete
-import Span from './shared/Span'
+import Span from '../shared/Span'
 
 const TodoView = ({todoList,
     deletionHandle,
@@ -59,15 +59,27 @@ deletionHandle(id)
             }
 
         {editToggle ? ( 
-        <span onClick={()=> onChangeHandler(id)} className="todo-button-shared-style edit-button">
-                    Update
-</span>
+
+            <Span 
+            value={"Update"}
+            id={id}
+            onClick={updateSubmitHandlerButton }
+            className={`todo-button-shared-style edit-button`}
+            disabledClass= "disabled"
+            disabledButton ={disabledEdit}
+//         <span onClick={()=> onChangeHandler(id)} className="todo-button-shared-style edit-button">
+//                     Update
+// </span>
 ):(
 
 
     <Span
     value={"Edit"}
+    id ={id}
+    onClick={editHandle}
     className ={`todo-button-shared-style edit-button`}
+    disabledClass ="disabled"
+    disabledButton ={disabledEdit}
     /> 
         // <span onClick={()=>editHandle(id)} 
         // className={`todo-button-shared-style edit-button
