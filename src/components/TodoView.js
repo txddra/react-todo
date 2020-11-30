@@ -63,11 +63,17 @@ deletionHandle(id)
                     Update
 </span>
 ):(
-        <span onClick={()=>editHandle(id)} 
-        className={`todo-button-shared-style edit-button
-          ${disabledEdit ? "disabled" : ""}`}>
-            Edit 
-        </span>
+
+
+    <Span
+    value={"Edit"}
+    className ={`todo-button-shared-style edit-button`}
+    /> 
+        // <span onClick={()=>editHandle(id)} 
+        // className={`todo-button-shared-style edit-button
+        //   ${disabledEdit ? "disabled" : ""}`}>
+        //     Edit 
+        // </span>
 
     )
             }
